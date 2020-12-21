@@ -1,0 +1,30 @@
+language: python
+
+python: 
+  - "3.6"
+
+install:
+  - pip install -r requirements.txt
+
+cache:
+  bundler: true
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/docker
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log   
+
+addons:
+  apt:
+    packages:
+      - net-tools
+
+services:
+  - docker
+
+script:
+  - export HOST_IP=$(ifconfig docker0 | awk -F"[:, ]+" '/inet/ {print $4}')
+  - docker-compose -f ./selenium-grid/docker-compose.yaml up -d
+  - . ./selenium-grid/wait-for-grid.sh && pytest
+  - docker-compose -f ./selenium-grid/docker-compose.yaml down
