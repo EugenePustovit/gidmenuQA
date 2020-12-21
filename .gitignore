@@ -1,0 +1,7 @@
+*.iml
+.idea
+*.class
+target/
+*.DS_Store
+local.properties
+venv
