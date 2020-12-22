@@ -5,3 +5,6 @@ target/
 *.DS_Store
 local.properties
 venv
+*.log
+.pytest_cache
+**/__pycache__
