@@ -20,13 +20,14 @@ def init_remote_driver_chrome():
 def init_remote_driver_firefox():
     caps = DesiredCapabilities.FIREFOX.copy()
     # caps['headless'] = True
+    caps['version'] = 'random'
 
     driver = webdriver.Remote(command_executor=REMOTE_URL,
                               desired_capabilities=caps)
 
     return driver
 
-@pytest.fixture(params=['chrome'], scope='class', autouse=True)
+@pytest.fixture(params=['chrome', 'firefox'], scope='class', autouse=True)
 def init_driver(request):
     driver = None
     if request.param == 'chrome':
