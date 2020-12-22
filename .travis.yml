@@ -6,15 +6,6 @@ python:
 install:
   - pip install -r requirements.txt
 
-cache:
-  bundler: true
-  directories:
-    - $HOME/.cache/pip
-    - $HOME/docker
-
-before_cache:
-  - rm -f $HOME/.cache/pip/log/debug.log   
-
 addons:
   apt:
     packages:
