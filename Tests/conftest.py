@@ -10,6 +10,7 @@ REMOTE_URL = 'http://127.0.0.1:4444/wd/hub'
 def init_remote_driver_chrome():
     caps = DesiredCapabilities.CHROME.copy()
     # caps['headless'] = True
+    caps['version'] = 'ANY'
 
     driver = webdriver.Remote(command_executor=REMOTE_URL,
                               desired_capabilities=caps)
