@@ -8,7 +8,3 @@ class TestHomePage:
         title = self.home_page.get_title()
 
         assert title == HomePage.TITLE
-
-
-def test():
-    pass
