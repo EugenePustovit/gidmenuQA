@@ -26,6 +26,7 @@ services:
 
 script:
   - export HOST_IP=$(ifconfig docker0 | awk -F"[:, ]+" '/inet/ {print $4}')
+  - echo "$DOCKER_PAS" | docker login --username "$DOCKER_USER" --password-stdin
   - docker-compose -f ./selenium-grid/docker-compose.yml up -d
   - . ./selenium-grid/wait-for-grid.sh && pytest
   - docker-compose -f ./selenium-grid/docker-compose.yml down
