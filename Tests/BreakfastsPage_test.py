@@ -1,7 +1,7 @@
 from Pages.BreakfastPage import BreakfastPage
 
 
-class TestHomePage:
+class TestBreakfastPage:
 
     HOME_BUTTON = '//header//a[@class="navbar-brand"]'
 
