@@ -26,7 +26,7 @@ def init_remote_driver_chrome():
                                   desired_capabilities=caps)
     else:
         options = webdriver.ChromeOptions()
-        options.headless = True
+        options.headless = False
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
     return driver
@@ -39,13 +39,13 @@ def init_remote_driver_firefox():
                                   desired_capabilities=caps)
     else:
         options = webdriver.FirefoxOptions()
-        options.headless = True
+        options.headless = False
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
 
     return driver
 
 
-@pytest.fixture(params=['chrome', 'firefox'], scope='class', autouse=True)
+@pytest.fixture(params=['chrome'], scope='class', autouse=True)
 def init_driver(request):
     driver = None
     if request.param == 'chrome':
