@@ -1,5 +1,3 @@
-from time import sleep
-
 from Pages.BasePage import BasePage
 from Pages.HomePage import HomePage
 

@@ -9,6 +9,3 @@ class HomePage(BasePage):
     def __init__(self, driver):
         super(HomePage, self).__init__(driver)
         self.page_url = TD.HOME_PAGE_URL
-
-    def go_to_page(self):
-        self.driver.get(self.page_url)

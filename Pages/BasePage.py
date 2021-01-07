@@ -9,9 +9,13 @@ class BasePage(Page):
 
     def __init__(self, driver):
         super(BasePage, self).__init__(driver)
+        self.page_url = str()
+
+    def go_to_page(self):
+        self.driver.get(self.page_url)
 
     def click_profile_icon(self):
-        self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "header div[class$=mx-3] a"))).click()
+        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "header div[class$=mx-3] a"))).click()
 
     def enter_email(self, text):
         self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "input#inputLoginEmail"))).send_keys(text)
