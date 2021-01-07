@@ -26,6 +26,7 @@ def init_remote_driver_chrome():
                                   desired_capabilities=caps)
     else:
         options = webdriver.ChromeOptions()
+        options.add_argument("--window-size=1600,1080")
         options.headless = True
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
@@ -39,6 +40,8 @@ def init_remote_driver_firefox():
                                   desired_capabilities=caps)
     else:
         options = webdriver.FirefoxOptions()
+        options.add_argument("--width=1600")
+        options.add_argument("--height=1080")
         options.headless = True
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
 
