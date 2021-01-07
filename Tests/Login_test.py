@@ -9,7 +9,6 @@ class TestLogin:
         self.driver.implicitly_wait(0)
         self.home_page = HomePage(self.driver)
 
-
         self.home_page.go_to_page()
         self.home_page.click_profile_icon()
         self.home_page.enter_email("john.doe@mail.com")
