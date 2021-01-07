@@ -1,10 +1,13 @@
-from Pages.BasePage import BasePage as BP
-from Pages.RestaurantsPage import PatriarshiePrudy
+import pytest
+from Config.TestData import TestData
+from Pages.RestaurantsPage import RestaurantsPage
 
-class TestRestaurantsPagePatriarshiePrudy:
 
-    def test_title(self):
-        self.patriarshie_prudy = PatriarshiePrudy(self.driver)
-        title = self.patriarshie_prudy.get_title()
+class TestRestaurantsPage:
 
-        assert title == PatriarshiePrudy.TITLE
+    @pytest.mark.parametrize('restaurant', TestData.RESTAURANT_COLLECTION)
+    def test_title(self, restaurant):
+        self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
+        title = self.restaurant.get_title()
+
+        assert title == restaurant['title']
