@@ -1,5 +1,6 @@
 from Pages.BasePage import BasePage
 from Pages.HomePage import HomePage
+from Config.TestData import TestData as TD
 
 
 class TestLogin:
@@ -11,8 +12,8 @@ class TestLogin:
 
         self.home_page.go_to_page()
         self.home_page.click_profile_icon()
-        self.home_page.enter_email("john.doe@mail.com")
-        self.home_page.enter_password("Hilton102")
+        self.home_page.enter_email(TD.ACCOUNT['email'])
+        self.home_page.enter_password(TD.ACCOUNT['invalid_password'])
         self.home_page.click_login()
 
         assert self.home_page.is_login_error_modal_displayed() == True

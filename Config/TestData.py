@@ -9,3 +9,9 @@ class TestData:
     }
 
     RESTAURANT_COLLECTION = [PATRIARSHIE_PRUDY]
+    ACCOUNT = {
+        'email': 'john.doe@mail.com',
+        'password': 'Hilton101',
+        'invalid_email': 'john.doe@mail.con',
+        'invalid_password': 'Hilton102'
+    }
