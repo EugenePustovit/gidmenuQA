@@ -12,4 +12,13 @@ class TestData:
         'title': 'Москва сити',
     }
 
-    RESTAURANT_COLLECTION = [PATRIARSHIE_PRUDY, MOSKVA_CITY]
+    DEPO = {
+        'url': 'https://gidmenu.com/restaurants/depo/?show_dish_rest_groups=N',
+        'title': 'Депо',
+    }
+
+    RESTAURANTS_COLLECTION = [
+        PATRIARSHIE_PRUDY,
+        MOSKVA_CITY,
+        DEPO,
+        ]
