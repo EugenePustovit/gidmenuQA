@@ -1,3 +1,5 @@
+import pytest
+
 from Pages.BasePage import BasePage
 from Pages.HomePage import HomePage
 from Config.TestData import TestData as TD
@@ -5,6 +7,7 @@ from Config.TestData import TestData as TD
 
 class TestLogin:
 
+    @pytest.mark.login
     def test_Login_invalid_password(self):
 
         self.driver.implicitly_wait(0)
