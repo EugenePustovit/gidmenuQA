@@ -7,6 +7,5 @@ class HomePage(BasePage):
     TITLE = 'Гастрономический путеводитель'
 
     def __init__(self, driver):
-        super().__init__(driver)
-
-        self.driver.get(TD.HOME_PAGE_URL)
+        super(HomePage, self).__init__(driver)
+        self.page_url = TD.HOME_PAGE_URL
