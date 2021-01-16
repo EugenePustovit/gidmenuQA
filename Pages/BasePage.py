@@ -1,6 +1,9 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from Pages.Page import Page
+
 
 
 class BasePage(Page):
@@ -36,3 +39,19 @@ class BasePage(Page):
         error_str = self.wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "div#infoMsgModal div.modal-body"))).text
         return error_str
+
+class BasePageDef:
+    def __init__(self, driver, timeout=10):
+        self.driver = driver
+        self.timeout = timeout
+
+    def is_visible(self, by_locator):
+        condition = EC.visibility_of_element_located(by_locator)
+        element = WebDriverWait(self.driver, self.timeout).until(condition)
+
+        return bool(element)
+
+    def click(self, by_locator):
+        condition = EC.visibility_of_element_located(by_locator)
+        element = WebDriverWait(self.driver, self.timeout).until(condition)
+        element.click()
