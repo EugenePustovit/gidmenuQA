@@ -1,13 +1,12 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager import driver
 
 from Pages.Page import Page
 
 
-
 class BasePage(Page):
-
     LOGIN_ERROR_MESSAGE = 'Неверный логин или пароль.'
 
     def __init__(self, driver):
@@ -40,6 +39,7 @@ class BasePage(Page):
             EC.visibility_of_element_located((By.CSS_SELECTOR, "div#infoMsgModal div.modal-body"))).text
         return error_str
 
+
 class BasePageDef:
     def __init__(self, driver, timeout=10):
         self.driver = driver
@@ -51,7 +51,9 @@ class BasePageDef:
 
         return bool(element)
 
-    def click(self, by_locator):
+    def is_clickable(self, by_locator):
         condition = EC.visibility_of_element_located(by_locator)
         element = WebDriverWait(self.driver, self.timeout).until(condition)
         element.click()
+
+        return bool(element)
