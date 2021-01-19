@@ -1,9 +1,18 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from webdriver_manager import driver
 
 from Pages.Page import Page
+
+
+def is_visible(by_locator):
+    condition = EC.visibility_of_element_located(by_locator)
+    return bool(condition)
+
+
+def is_clickable(by_locator):
+    condition = EC.element_to_be_clickable(by_locator)
+    return bool(condition)
 
 
 class BasePage(Page):
@@ -12,6 +21,16 @@ class BasePage(Page):
     def __init__(self, driver):
         super(BasePage, self).__init__(driver)
         self.page_url = str()
+        self.driver = driver
+
+    def is_visible(by_locator):
+        condition = EC.visibility_of_element_located(by_locator)
+        return bool(condition)
+
+    def is_clickable(self, by_locator):
+        condition = EC.element_to_be_clickable(by_locator)
+
+        return bool(condition)
 
     def go_to_page(self):
         self.driver.get(self.page_url)
@@ -38,22 +57,3 @@ class BasePage(Page):
         error_str = self.wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "div#infoMsgModal div.modal-body"))).text
         return error_str
-
-
-class BasePageDef:
-    def __init__(self, driver, timeout=10):
-        self.driver = driver
-        self.timeout = timeout
-
-    def is_visible(self, by_locator):
-        condition = EC.visibility_of_element_located(by_locator)
-        element = WebDriverWait(self.driver, self.timeout).until(condition)
-
-        return bool(element)
-
-    def is_clickable(self, by_locator):
-        condition = EC.visibility_of_element_located(by_locator)
-        element = WebDriverWait(self.driver, self.timeout).until(condition)
-        element.click()
-
-        return bool(element)
