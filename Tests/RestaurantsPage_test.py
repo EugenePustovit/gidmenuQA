@@ -17,21 +17,21 @@ class TestRestaurantsPage:
     def test_logo_visible(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert BasePage.is_visible(RestaurantsPage.LOGO) == True
+        assert BasePage.is_visible(RestaurantsPage.LOGO)
 
     def test_dish_group_is_visible(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert BasePage.is_visible(RestaurantsPage.DISH_GROUP) == True
-        assert BasePage.is_visible(RestaurantsPage.RESTAURANT_IN_GROUP) == True
-        assert BasePage.is_visible(RestaurantsPage.ALCOHOL) == True
-        assert BasePage.is_visible(RestaurantsPage.DISH) == True
+        assert BasePage.is_visible(RestaurantsPage.DISH_GROUP)
+        assert BasePage.is_visible(RestaurantsPage.RESTAURANT_IN_GROUP)
+        assert BasePage.is_visible(RestaurantsPage.ALCOHOL)
+        assert BasePage.is_visible(RestaurantsPage.DISH)
 
     def test_dish_alcohol_is_clickable(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert BasePage.is_clickable(RestaurantsPage.ALCOHOL) == True
-        assert BasePage.is_clickable(RestaurantsPage.DISH) == True
-        assert BasePage.is_clickable(RestaurantsPage.RESTAURANT_IN_GROUP) == True
+        assert BasePage.is_clickable(RestaurantsPage.ALCOHOL)
+        assert BasePage.is_clickable(RestaurantsPage.DISH)
+        assert BasePage.is_clickable(RestaurantsPage.RESTAURANT_IN_GROUP)
 
 
