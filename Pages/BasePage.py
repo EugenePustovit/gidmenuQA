@@ -5,16 +5,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from Pages.Page import Page
 
 
-def is_visible(by_locator):
-    condition = EC.visibility_of_element_located(by_locator)
-    return bool(condition)
-
-
-def is_clickable(by_locator):
-    condition = EC.element_to_be_clickable(by_locator)
-    return bool(condition)
-
-
 class BasePage(Page):
     LOGIN_ERROR_MESSAGE = 'Неверный логин или пароль.'
 
@@ -23,12 +13,12 @@ class BasePage(Page):
         self.page_url = str()
         self.driver = driver
 
-    def is_visible(by_locator):
-        condition = EC.visibility_of_element_located(by_locator)
+    def is_visible(self):
+        condition = EC.visibility_of_element_located(self)
         return bool(condition)
 
-    def is_clickable(self, by_locator):
-        condition = EC.element_to_be_clickable(by_locator)
+    def is_clickable(self):
+        condition = EC.element_to_be_clickable(self)
 
         return bool(condition)
 

@@ -1,6 +1,6 @@
 import pytest
 from Config.TestData import TestData
-from Pages.BasePage import is_visible, BasePage, is_clickable
+from Pages.BasePage import BasePage
 from Pages.RestaurantsPage import RestaurantsPage
 
 
@@ -17,21 +17,21 @@ class TestRestaurantsPage:
     def test_logo_visible(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert is_visible(RestaurantsPage.LOGO) == True
+        assert BasePage.is_visible(RestaurantsPage.LOGO) == True
 
     def test_dish_group_is_visible(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert is_visible(RestaurantsPage.DISH_GROUP) == True
-        assert is_visible(RestaurantsPage.RESTAURANT_IN_GROUP) == True
-        assert is_visible(RestaurantsPage.ALCOHOL) == True
-        assert is_visible(RestaurantsPage.DISH) == True
+        assert BasePage.is_visible(RestaurantsPage.DISH_GROUP) == True
+        assert BasePage.is_visible(RestaurantsPage.RESTAURANT_IN_GROUP) == True
+        assert BasePage.is_visible(RestaurantsPage.ALCOHOL) == True
+        assert BasePage.is_visible(RestaurantsPage.DISH) == True
 
     def test_dish_alcohol_is_clickable(self, restaurant):
         self.restaurant = RestaurantsPage(self.driver, restaurant['url'])
 
-        assert is_clickable(RestaurantsPage.ALCOHOL) == True
-        assert is_clickable(RestaurantsPage.DISH) == True
-        assert is_clickable(RestaurantsPage.RESTAURANT_IN_GROUP) == True
+        assert BasePage.is_clickable(RestaurantsPage.ALCOHOL) == True
+        assert BasePage.is_clickable(RestaurantsPage.DISH) == True
+        assert BasePage.is_clickable(RestaurantsPage.RESTAURANT_IN_GROUP) == True
 
 
