@@ -1,15 +1,26 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from Pages.Page import Page
 
 
 class BasePage(Page):
-
     LOGIN_ERROR_MESSAGE = 'Неверный логин или пароль.'
 
     def __init__(self, driver):
         super(BasePage, self).__init__(driver)
         self.page_url = str()
+        self.driver = driver
+
+    def is_visible(self):
+        condition = EC.visibility_of_element_located(self)
+        return bool(condition)
+
+    def is_clickable(self):
+        condition = EC.element_to_be_clickable(self)
+
+        return bool(condition)
 
     def go_to_page(self):
         self.driver.get(self.page_url)
