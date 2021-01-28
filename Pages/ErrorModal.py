@@ -7,7 +7,6 @@ class ErrorModal:
 
     ERROR_MODAL = (By.ID, "infoMsgModal")
     ERROR_MESSAGE = (By.CSS_SELECTOR, "div#infoMsgModal div.modal-body")
-    LOGIN_ERROR_MESSAGE_TEXT = 'Неверный логин или пароль.'
 
     def __init__(self, driver):
         self.driver = driver
