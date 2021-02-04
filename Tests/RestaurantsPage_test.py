@@ -1,6 +1,5 @@
 import pytest
 from Config.TestData import TestData
-from Pages.BasePage import BasePage
 from Pages.RestaurantsPage import RestaurantsPage
 
 
