@@ -61,3 +61,5 @@ class TestData:
     ]
 
     LIST_OF_RESTAURANTS_NAMES = [x['restaurant_name'] for x in RESTAURANTS_COLLECTION]
+
+    LOGIN_ERROR_MESSAGE_TEXT = 'Неверный логин или пароль.'
