@@ -12,8 +12,8 @@ class BasePage(Page):
         self.page_url = str()
         self.driver = driver
 
-    def is_visible(self):
-        condition = EC.visibility_of_element_located(self)
+    def is_visible(self, element):
+        condition = EC.visibility_of_element_located(element)
         return bool(condition)
 
     def is_clickable(self, element):
