@@ -13,26 +13,14 @@ class BasePage(Page):
         self.page_url = str()
         self.driver = driver
 
-    def text_from_web_page(self, locator):
-        text_from_web = self.driver.find_element(*locator).text
-        return text_from_web
-
-    def is_visible(self, element):
-        condition = EC.visibility_of_element_located(element)
+    def is_visible(self):
+        condition = EC.visibility_of_element_located(self)
         return bool(condition)
 
     def is_clickable(self, element):
         condition = EC.element_to_be_clickable(element)
 
         return bool(condition)
-
-    def click(self, locator):
-        element = self.driver.find_element(locator[0], locator[1])
-        element.click()
-
-    def send_key(self, locator, value):
-        element = self.driver.find_element(locator[0], locator[1])
-        element.send_keys(value)
 
     def go_to_page(self):
         self.driver.get(self.page_url)
